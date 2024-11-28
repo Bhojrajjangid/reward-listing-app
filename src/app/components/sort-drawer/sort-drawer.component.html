@@ -1,0 +1,25 @@
+<div class="side-drawer open">
+    <!-- Header Section -->
+    <div class="drawer-header d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+        <h3 class="mb-0">Filter By</h3>
+        <button class="btn btn-link text-danger fw-bold p-0" (click)="resetAll()">Reset All</button>
+    </div>
+
+    <!-- Body Section -->
+    <div class="drawer-body">
+        <!-- Sort Buttons -->
+        <div class="btn-group d-flex mb-3" role="group">
+            <button type="button" class="btn flex-fill"
+                [ngClass]="sortOrder === 'asc' ? 'btn-danger':  'btn-outline-danger'" (click)="sortValue('asc')">
+                Sort A-Z
+            </button>
+            <button type="button" class="btn flex-fill"
+                [ngClass]="sortOrder === 'desc' ? 'btn-danger':  'btn-outline-danger'" (click)="sortValue('desc')">
+                Sort Z-A
+            </button>
+        </div>
+
+        <!-- Apply Button -->
+        <button class="btn btn-danger btn-block mt-auto w-100" (click)="apply()">Apply</button>
+    </div>
+</div>

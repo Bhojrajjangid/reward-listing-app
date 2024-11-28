@@ -1,0 +1,49 @@
+<main class="content">
+    <!-- Header Section -->
+    <header class="header d-flex justify-content-between align-items-center">
+        <div class="icons">
+            <i class="bi bi-bell"></i>
+            <i class="bi bi-translate"></i>
+            <i class="bi bi-person-circle"></i>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-bar d-flex align-items-center justify-content-between">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText" />
+        <button class="btn btn-primary" (click)="openSortDrawer()">Sort</button>
+        <app-sort-drawer *ngIf="showSortDrawer" [sortOrder]="sortOrder" (applyFilters)="handleSort($event)"
+            (closeDrawer)="closeSortDrawer()"></app-sort-drawer>
+    </div>
+
+    <!-- Content Body -->
+    <div class="content-body d-flex">
+        <!-- Left Column: Categories & Filters -->
+        <aside class="categories">
+            <h3>Categories</h3>
+            <ul>
+                <li *ngFor="let category of categories">{{ category }}</li>
+            </ul>
+            <h3>Applied Filters</h3>
+            <ul>
+                <li *ngFor="let filter of filters">{{ filter }}</li>
+            </ul>
+        </aside>
+
+        <!-- Right Column: Rewards List -->
+        <section class="rewards-list">
+            <div class="reward-item" *ngFor="let reward of rewards | sort: sortOrder : 'name'">
+                <img [src]="reward.display_img_url || 'https://via.placeholder.com/150'" [alt]="reward.name"
+                    class="reward-image" />
+                <div class="reward-details">
+                    <h4>{{ reward.name }}</h4>
+                    <p>Points: {{ reward.points }}</p>
+                    <p>Valid Until: {{ reward.valid_until | date }}</p>
+                    <p class="status" [ngClass]="{ 'out-of-stock': reward.quantity === 0 }">
+                        {{ getRewardStatus(reward) }}
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
