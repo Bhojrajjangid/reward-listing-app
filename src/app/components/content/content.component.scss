@@ -41,7 +41,6 @@
         gap: 1.5rem;
 
         .categories {
-            flex: 1;
             background-color: #f8f9fa;
             padding: 1.5rem;
             border-radius: 10px;
@@ -94,6 +93,7 @@
             gap: 1rem;
 
             .reward-item {
+                margin-bottom: 25px;
                 flex: 1 1 calc(25% - 1rem); // Adjust to fit four columns
                 background-color: #ffffff;
                 border: 1px solid #dee2e6;
@@ -102,6 +102,10 @@
                 text-align: center;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 transition: transform 0.2s ease, box-shadow 0.2s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 350px; // Fixed height for consistency
 
                 &:hover {
                     transform: scale(1.02);
@@ -109,14 +113,22 @@
                 }
 
                 .reward-image {
-                    max-width: 100%;
-                    height: auto;
+                    max-width: 165px;
+                    max-height: 165px;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; // Maintain aspect ratio and cover the space
                     margin-bottom: 1rem;
                     border-radius: 8px;
                     border: 1px solid #dee2e6;
                 }
 
                 .reward-details {
+                    flex-grow: 1; // Allow details to fill available space
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
                     h4 {
                         font-size: 1.1rem;
                         margin-bottom: 0.5rem;
@@ -141,4 +153,15 @@
             }
         }
     }
+}
+
+.no-data {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
