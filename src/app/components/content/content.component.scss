@@ -37,15 +37,16 @@
     }
 
     .content-body {
-        display: flex;
-        gap: 1.5rem;
-
         .categories {
             background-color: #f8f9fa;
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             min-width: 250px;
+            @media(max-width : 480px) {
+                min-width: 100%;
+                margin-bottom: 25px;
+            }
 
             h3 {
                 font-size: 1.2rem;
@@ -88,9 +89,6 @@
 
         .rewards-list {
             flex: 3;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
 
             .reward-item {
                 margin-bottom: 25px;
@@ -121,6 +119,10 @@
                     margin-bottom: 1rem;
                     border-radius: 8px;
                     border: 1px solid #dee2e6;
+
+                    @media(max-width : 480px) {
+                        max-width: 100%;
+                    }
                 }
 
                 .reward-details {

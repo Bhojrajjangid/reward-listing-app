@@ -9,43 +9,45 @@
     </div>
 
     <!-- Content Body -->
-    <div class="content-body d-flex flex-wrap gap-3">
-        <!-- Left Column: Categories & Filters -->
-        <aside class="categories col-12 col-sm-6 col-md-4 col-lg-3">
-            <h3>Categories</h3>
-            <ul>
-                <li *ngFor="let category of categories">{{ category }}</li>
-            </ul>
-            <h3>Applied Filters</h3>
-            <ul>
-                <li *ngFor="let filter of filters">{{ filter }}</li>
-            </ul>
-        </aside>
+    <div class="content-body">
+        <div class="row">
+            <!-- Left Column: Categories & Filters -->
+            <aside class="categories col-3">
+                <h3>Categories</h3>
+                <ul>
+                    <li *ngFor="let category of categories">{{ category }}</li>
+                </ul>
+                <h3>Applied Filters</h3>
+                <ul>
+                    <li *ngFor="let filter of filters">{{ filter }}</li>
+                </ul>
+            </aside>
 
-        <!-- Right Column: Rewards List -->
-        <section class="rewards-list col-12 col-sm-6 col-md-8 col-lg-9">
-            <div *ngIf="rewards.length === 0" class="no-data">
-                <p>No data available</p>
-            </div>
+            <!-- Right Column: Rewards List -->
+            <section class="rewards-list col-9">
+                <div *ngIf="rewards.length === 0" class="no-data">
+                    <p>No data available</p>
+                </div>
 
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3"
-                    *ngFor="let reward of rewards | sort: sortOrder : 'name'">
-                    <div class="reward-item">
-                        <img [src]="reward.display_img_url || placeholderImage" [alt]="reward.name"
-                            class="reward-image" />
-                        <div class="reward-details">
-                            <h4>{{ reward.name }}</h4>
-                            <p>Points: {{ reward.points }}</p>
-                            <p>Valid Until: {{ reward.valid_until | date }}</p>
-                            <p class="status" [ngClass]="{ 'out-of-stock': reward.quantity === 0 }">
-                                {{ getRewardStatus(reward) }}
-                            </p>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+                        *ngFor="let reward of rewards | sort: sortOrder : 'name'">
+                        <div class="reward-item">
+                            <img [src]="reward.display_img_url || placeholderImage" [alt]="reward.name"
+                                class="reward-image" />
+                            <div class="reward-details">
+                                <h4>{{ reward.name }}</h4>
+                                <p>Points: {{ reward.points }}</p>
+                                <p>Valid Until: {{ reward.valid_until | date }}</p>
+                                <p class="status" [ngClass]="{ 'out-of-stock': reward.quantity === 0 }">
+                                    {{ getRewardStatus(reward) }}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 
 </main>
